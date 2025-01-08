@@ -10,7 +10,7 @@ This codebase contains the official PyTorch implementation of <b>UniMatch V2</b>
 
 > **[UniMatch V2: Pushing the Limit of Semi-Supervised Semantic Segmentation](https://arxiv.org/abs/2410.10777)**</br>
 > Lihe Yang, Zhen Zhao, Hengshuang Zhao</br>
-> Preprint, 2024
+> *IEEE Transactions on Pattern Analysis and Machine Intelligence (TPAMI)*, 2025
 
 ## Results
 
@@ -93,8 +93,8 @@ If you find this project useful, please consider citing:
 @article{unimatchv2,
   title={UniMatch V2: Pushing the Limit of Semi-Supervised Semantic Segmentation},
   author={Yang, Lihe and Zhao, Zhen and Zhao, Hengshuang},
-  journal={arXiv:2410.10777},
-  year={2024}
+  journal={TPAMI},
+  year={2025}
 }
 ```
 

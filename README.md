@@ -158,7 +158,7 @@ If you find this project useful, please consider citing:
 @article{unimatchv2,
   title={UniMatch V2: Pushing the Limit of Semi-Supervised Semantic Segmentation},
   author={Yang, Lihe and Zhao, Zhen and Zhao, Hengshuang},
-  journal={arXiv:2410.10777},
-  year={2024}
+  journal={TPAMI},
+  year={2025}
 }
 ```
