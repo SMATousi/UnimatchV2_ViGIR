@@ -13,7 +13,7 @@ This codebase contains the official PyTorch implementation of <b>UniMatch V2</b>
 
 > **[UniMatch V2: Pushing the Limit of Semi-Supervised Semantic Segmentation](https://arxiv.org/abs/2410.10777)**</br>
 > Lihe Yang, Zhen Zhao, Hengshuang Zhao</br>
-> *IEEE Transactions on Pattern Analysis and Machine Intelligence (TPAMI)*, 2024
+> *IEEE Transactions on Pattern Analysis and Machine Intelligence (TPAMI)*, 2025
 
 <p align="left">
 <img src="./docs/framework.png" width=90% height=90% 
