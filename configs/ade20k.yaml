@@ -1,6 +1,6 @@
 # arguments for dataset
 dataset: ade20k
-data_root: Your/ADE20K/Path
+data_root: /home/macula/SMATousi/projects/Unimatch+RAE/datasets/ADE20K/data
 nclass: 150
 crop_size: 518
 
