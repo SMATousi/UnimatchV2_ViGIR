@@ -52,20 +52,20 @@ def main():
         
         os.makedirs(args.save_path, exist_ok=True)
 
-        if args.logging:
+
             
-            wandb.init(
-                    # set the wandb project where this run will be logged
-                project=args.projectname, name=args.runname
-                    
-                    # track hyperparameters and run metadata
-                    # config={
-                    # "learning_rate": 0.02,
-                    # "architecture": "CNN",
-                    # "dataset": "CIFAR-100",
-                    # "epochs": 20,
-                    # }
-            )
+        wandb.init(
+                # set the wandb project where this run will be logged
+            project=args.projectname, name=args.runname
+                
+                # track hyperparameters and run metadata
+                # config={
+                # "learning_rate": 0.02,
+                # "architecture": "CNN",
+                # "dataset": "CIFAR-100",
+                # "epochs": 20,
+                # }
+        )
 
     cudnn.enabled = True
     cudnn.benchmark = True
