@@ -23,4 +23,5 @@ python -m torch.distributed.launch \
     --master_port=$2 \
     $method.py \
     --config=$config --labeled-id-path $labeled_id_path --unlabeled-id-path $unlabeled_id_path \
-    --save-path $save_path --port $2 2>&1 | tee $save_path/out.log
+    --save-path $save_path --port $2 2>&1 | tee $save_path/out.log \
+    --projectname Unimatch_RAE --runname test_1
