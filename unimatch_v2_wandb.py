@@ -56,7 +56,7 @@ def main():
             
             wandb.init(
                     # set the wandb project where this run will be logged
-                project=args.projectname, name=args.runname"
+                project=args.projectname, name=args.runname
                     
                     # track hyperparameters and run metadata
                     # config={
