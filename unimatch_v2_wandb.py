@@ -23,14 +23,15 @@ import wandb
 
 
 parser = argparse.ArgumentParser(description='UniMatch V2: Pushing the Limit of Semi-Supervised Semantic Segmentation')
+parser.add_argument("--runname", type=str, required=False)
+parser.add_argument("--projectname", type=str, required=False)
 parser.add_argument('--config', type=str, required=True)
 parser.add_argument('--labeled-id-path', type=str, required=True)
 parser.add_argument('--unlabeled-id-path', type=str, required=True)
 parser.add_argument('--save-path', type=str, required=True)
 parser.add_argument('--local_rank', '--local-rank', default=0, type=int)
 parser.add_argument('--port', default=None, type=int)
-parser.add_argument("--runname", type=str, required=False)
-parser.add_argument("--projectname", type=str, required=False)
+
 
 
 def main():
