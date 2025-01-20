@@ -22,6 +22,7 @@ python -m torch.distributed.launch \
     --master_addr=localhost \
     --master_port=$2 \
     unimatch_v2_wandb.py \
+    --projectname Unimatch_RAE --runname test_1 \
     --config=$config --labeled-id-path $labeled_id_path --unlabeled-id-path $unlabeled_id_path \
     --save-path $save_path --port $2 2>&1 | tee $save_path/out.log \
-    --projectname Unimatch_RAE --runname test_1
+    
