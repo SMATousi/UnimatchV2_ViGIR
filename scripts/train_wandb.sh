@@ -5,10 +5,10 @@
 # method: ['unimatch_v2', 'fixmatch', 'supervised']
 # exp: just for specifying the 'save_path'
 # split: ['92', '1_16', ...]. Please check directory './splits/$dataset' for concrete splits
-dataset='ade20k'
+dataset='pascal'
 method='unimatch_v2_wandb'
 exp='dinov2_small'
-split='1_2'
+split='366'
 
 config=configs/${dataset}.yaml
 labeled_id_path=splits/$dataset/$split/labeled.txt
@@ -21,7 +21,7 @@ python -m torch.distributed.launch \
     --nproc_per_node=$1 \
     --master_addr=localhost \
     --master_port=$2 \
-    $method.py \
+    unimatch_v2_wandb.py \
     --config=$config --labeled-id-path $labeled_id_path --unlabeled-id-path $unlabeled_id_path \
     --save-path $save_path --port $2 2>&1 | tee $save_path/out.log \
     --projectname Unimatch_RAE --runname test_1
