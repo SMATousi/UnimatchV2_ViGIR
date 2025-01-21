@@ -2,7 +2,7 @@
 
 # modify these augments if you want to try other datasets, splits or methods
 # dataset: ['pascal', 'cityscapes', 'ade20k', 'coco']
-# method: ['unimatch_v2', 'fixmatch', 'supervised']
+# method: ['unimatch_v2', 'fixmatch', 'supervised', 'unimatch_v2_wandb', 'unimatch_v2_wandb_wo_FA']
 # exp: just for specifying the 'save_path'
 # split: ['92', '1_16', ...]. Please check directory './splits/$dataset' for concrete splits
 dataset='pascal'
@@ -21,7 +21,7 @@ python -m torch.distributed.launch \
     --nproc_per_node=$1 \
     --master_addr=localhost \
     --master_port=$2 \
-    unimatch_v2_wandb.py \
+    ${method}.py \
     --projectname Unimatch_RAE --runname test_1 \
     --config=$config --labeled-id-path $labeled_id_path --unlabeled-id-path $unlabeled_id_path \
     --save-path $save_path --port $2 2>&1 | tee $save_path/out.log \
