@@ -1,6 +1,6 @@
 # arguments for dataset
 dataset: pascal
-data_root: Your/PASCAL/Path
+data_root: /root/home/processed_datasets/pascal
 nclass: 21
 crop_size: 518
 
