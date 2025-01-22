@@ -16,6 +16,7 @@ from dataset.semi import SemiDataset
 from model.semseg.dpt import DPT
 from model.semseg.dpt import DPT_with_Feature
 from supervised import evaluate
+from supervised import evaluate_norm
 from util.classes import CLASSES
 from util.ohem import ProbOhemCrossEntropy2d
 from util.utils import count_params, init_log, AverageMeter
@@ -273,8 +274,8 @@ def main():
                                             total_loss_s.avg, total_mask_ratio.avg))
         
         eval_mode = 'sliding_window' if cfg['dataset'] == 'cityscapes' else 'original'
-        mIoU, iou_class = evaluate(model, valloader, eval_mode, cfg, multiplier=14)
-        mIoU_ema, iou_class_ema = evaluate(model_ema, valloader, eval_mode, cfg, multiplier=14)
+        mIoU, iou_class = evaluate_norm(model, valloader, eval_mode, cfg, multiplier=14)
+        mIoU_ema, iou_class_ema = evaluate_norm(model_ema, valloader, eval_mode, cfg, multiplier=14)
         
         if rank == 0:
             wandb.log({'eval/mIoU':mIoU,
