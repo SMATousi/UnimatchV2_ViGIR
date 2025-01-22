@@ -170,3 +170,66 @@ class DPT(nn.Module):
         out = F.interpolate(out, (patch_h * 14, patch_w * 14), mode='bilinear', align_corners=True)
         
         return out
+
+
+class DPT_with_Feature(nn.Module):
+    def __init__(
+        self, 
+        encoder_size='base', 
+        nclass=21,
+        features=128, 
+        out_channels=[96, 192, 384, 768], 
+        use_bn=False,
+    ):
+        super(DPT_with_Feature, self).__init__()
+        
+        self.intermediate_layer_idx = {
+            'small': [2, 5, 8, 11],
+            'base': [2, 5, 8, 11], 
+            'large': [4, 11, 17, 23], 
+            'giant': [9, 19, 29, 39]
+        }
+        
+        self.encoder_size = encoder_size
+        self.backbone = DINOv2(model_name=encoder_size)
+        
+        self.head = DPTHead(nclass, self.backbone.embed_dim, features, use_bn, out_channels=out_channels)
+        
+        self.binomial = torch.distributions.binomial.Binomial(probs=0.5)
+        
+    def lock_backbone(self):
+        for p in self.backbone.parameters():
+            p.requires_grad = False
+    
+    def forward(self, x, comp_drop=False):
+        patch_h, patch_w = x.shape[-2] // 14, x.shape[-1] // 14
+        
+        features = self.backbone.get_intermediate_layers(
+            x, self.intermediate_layer_idx[self.encoder_size]
+        )
+        
+        if comp_drop:
+            bs, dim = features[0].shape[0], features[0].shape[-1]
+            
+            dropout_mask1 = self.binomial.sample((bs // 2, dim)).cuda() * 2.0
+            dropout_mask2 = 2.0 - dropout_mask1
+            dropout_prob = 0.5
+            num_kept = int(bs // 2 * (1 - dropout_prob))
+            kept_indexes = torch.randperm(bs // 2)[:num_kept]
+            dropout_mask1[kept_indexes, :] = 1.0
+            dropout_mask2[kept_indexes, :] = 1.0
+            
+            dropout_mask = torch.cat((dropout_mask1, dropout_mask2))
+            
+            features = (feature * dropout_mask.unsqueeze(1) for feature in features)
+            
+            out = self.head(features, patch_h, patch_w)
+            
+            out = F.interpolate(out, (patch_h * 14, patch_w * 14), mode='bilinear', align_corners=True)
+            
+            return out, features
+        
+        out = self.head(features, patch_h, patch_w)
+        out = F.interpolate(out, (patch_h * 14, patch_w * 14), mode='bilinear', align_corners=True)
+        
+        return out, features
