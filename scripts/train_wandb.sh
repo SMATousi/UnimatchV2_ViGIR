@@ -7,11 +7,12 @@
 #          'supervised', 
 #          'unimatch_v2_wandb', 
 #          'unimatch_v2_wandb_wo_FA',
-#          'unimatch_v2_wandb_normloss']
+#          'unimatch_v2_wandb_normloss',
+#          'unimatch_v2_wandb_wo_FA_normloss']
 # exp: just for specifying the 'save_path'
 # split: ['92', '1_16', ...]. Please check directory './splits/$dataset' for concrete splits
 dataset='pascal'
-method='unimatch_v2_wandb'
+method='unimatch_v2_wandb_wo_FA_normloss'
 exp='dinov2_small'
 split='366'
 
@@ -27,7 +28,7 @@ python -m torch.distributed.launch \
     --master_addr=localhost \
     --master_port=$2 \
     ${method}.py \
-    --projectname Unimatch_RAE --runname pascal \
+    --projectname Unimatch_RAE --runname pascal_wo_FA_366_norm \
     --config=$config --labeled-id-path $labeled_id_path --unlabeled-id-path $unlabeled_id_path \
     --save-path $save_path --port $2 2>&1 | tee $save_path/out.log \
     
