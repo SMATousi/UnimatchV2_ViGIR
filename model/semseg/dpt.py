@@ -227,11 +227,11 @@ class DPT_with_Feature(nn.Module):
             
             out = self.head(features, patch_h, patch_w)
             
-            out = F.interpolate(out, (patch_h * 14, patch_w * 14), mode='bilinear', align_corners=True)
+            # out = F.interpolate(out, (patch_h * 14, patch_w * 14), mode='bilinear', align_corners=True)
             
             return out, features
         
         out = self.head(features, patch_h, patch_w)
-        out = F.interpolate(out, (patch_h * 14, patch_w * 14), mode='bilinear', align_corners=True)
+        # out = F.interpolate(out, (patch_h * 14, patch_w * 14), mode='bilinear', align_corners=True)
         
         return out, features
