@@ -204,7 +204,7 @@ def main():
             img_u_s2[cutmix_box2.unsqueeze(1).expand(img_u_s2.shape) == 1] = img_u_s2.flip(0)[cutmix_box2.unsqueeze(1).expand(img_u_s2.shape) == 1]
             
             pred_x, pred_x_features = model(img_x)
-            pred_u_s, pred_u_s_features = model(torch.cat((img_u_s1, img_u_s2)), comp_drop=False)
+            pred_u_s, pred_u_s_features = model(torch.cat((img_u_s1, img_u_s2)), comp_drop=True)
             pred_u_s1, pred_u_s2 = pred_u_s.chunk(2)
 
             

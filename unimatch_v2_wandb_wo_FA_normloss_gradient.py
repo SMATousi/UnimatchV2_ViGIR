@@ -121,7 +121,6 @@ def main():
 
     criterion_u = nn.CrossEntropyLoss(reduction='none').cuda(local_rank)
     criterion_norm = NormalizedCompactnessNormLoss().cuda(local_rank)
-    criterion_gradient = GradientPenaltyLoss().cuda(local_rank)
 
 
     trainset_u = SemiDataset(
@@ -176,7 +175,6 @@ def main():
         total_loss  = AverageMeter()
         total_loss_x = AverageMeter()
         total_loss_x_norm = AverageMeter()
-        total_loss_x_gradient = AverageMeter()
         total_loss_s = AverageMeter()
         total_mask_ratio = AverageMeter()
 
@@ -221,7 +219,6 @@ def main():
             
             loss_x = criterion_l(pred_x, mask_x)
             loss_x_norm = criterion_norm(pred_x_features)
-            loss_x_gradient = criterion_gradient(pred_x_features, pred_x)
 
             loss_u_s1 = criterion_u(pred_u_s1, mask_u_w_cutmixed1)
             loss_u_s1 = loss_u_s1 * ((conf_u_w_cutmixed1 >= cfg['conf_thresh']) & (ignore_mask_cutmixed1 != 255))
@@ -233,7 +230,7 @@ def main():
             
             loss_u_s = (loss_u_s1 + loss_u_s2) / 2.0
             
-            loss = (loss_x + loss_x_norm + loss_x_gradient + loss_u_s) / 4.0
+            loss = (loss_x + loss_x_norm + loss_u_s) / 3.0
             
             optimizer.zero_grad()
             loss.backward()
@@ -242,7 +239,6 @@ def main():
             total_loss.update(loss.item())
             total_loss_x.update(loss_x.item())
             total_loss_x_norm.update(loss_x_norm.item())
-            total_loss_x_gradient.update(loss_x_gradient.item())
             total_loss_s.update(loss_u_s.item())
             mask_ratio = ((conf_u_w >= cfg['conf_thresh']) & (ignore_mask != 255)).sum().item() / (ignore_mask != 255).sum()
             total_mask_ratio.update(mask_ratio.item())
@@ -264,13 +260,11 @@ def main():
                            'train/loss_x': loss_x.item(),
                            'train/loss_s': loss_u_s.item(),
                            'train/loss_x_norm':loss_x_norm.item(),
-                           'train/loss_x_gradient':loss_x_gradient.item(),
                            'train/mask_ratio': mask_ratio})
 
                 writer.add_scalar('train/loss_all', loss.item(), iters)
                 writer.add_scalar('train/loss_x', loss_x.item(), iters)
                 writer.add_scalar('train/loss_x_norm', loss_x_norm.item(), iters)
-                writer.add_scalar('train/loss_x_gradient', loss_x_gradient.item(), iters)
                 writer.add_scalar('train/loss_s', loss_u_s.item(), iters)
                 writer.add_scalar('train/mask_ratio', mask_ratio, iters)
 
