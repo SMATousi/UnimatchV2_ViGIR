@@ -37,7 +37,7 @@ class GradientPenaltyLoss(nn.Module):
         # Calculate gradients of pred_loss with respect to embeddings
         grad_pred_loss = torch.autograd.grad(outputs=pred_loss, inputs=embeddings,
                                              grad_outputs=torch.ones_like(pred_loss),
-                                             create_graph=True)[0]  # Create graph for further gradient computations
+                                             create_graph=True,allow_unused=True)[0]  # Create graph for further gradient computations
 
         # Square the gradients
         norm = torch.norm(grad_pred_loss, p=2, dim=-1, keepdim=True) + 1e-8
