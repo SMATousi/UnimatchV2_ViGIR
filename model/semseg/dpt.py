@@ -221,7 +221,9 @@ class DPT_with_Feature(nn.Module):
             
             dropout_mask = torch.cat((dropout_mask1, dropout_mask2))
             
-            features = (feature * dropout_mask.unsqueeze(1) for feature in features)
+            # features = (feature * dropout_mask.unsqueeze(1) for feature in features)
+            features = [feature * dropout_mask.unsqueeze(1) for feature in features]
+
             
             out = self.head(features, patch_h, patch_w)
             

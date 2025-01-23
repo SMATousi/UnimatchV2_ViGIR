@@ -44,7 +44,7 @@ class GradientPenaltyLoss(nn.Module):
             # Calculate gradients of pred_loss with respect to this embedding
             grad_pred_loss = torch.autograd.grad(outputs=pred_loss, inputs=embedding,
                                                  grad_outputs=torch.ones_like(pred_loss),
-                                                 create_graph=True,allow_unused=True)[0]
+                                                 create_graph=True)[0]
 
             # Handle the case where gradients are unused (i.e., None)
             if grad_pred_loss is None:
