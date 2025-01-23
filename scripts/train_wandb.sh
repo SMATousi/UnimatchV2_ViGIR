@@ -10,7 +10,9 @@
 #          'unimatch_v2_wandb_normloss',
 #          'unimatch_v2_wandb_wo_FA_normloss',
 #          'unimatch_v2_wandb_normloss_gradient',
-#          'unimatch_v2_wandb_wo_FA_normloss_gradient']
+#          'unimatch_v2_wandb_wo_FA_normloss_gradient',
+#          'unimatch_v2_wandb_gradient',
+#          'unimatch_v2_wandb_wo_FA_gradient']
 # exp: just for specifying the 'save_path'
 # split: ['92', '1_16', ...]. Please check directory './splits/$dataset' for concrete splits
 dataset='pascal'
