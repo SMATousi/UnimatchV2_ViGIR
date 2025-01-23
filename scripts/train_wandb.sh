@@ -16,7 +16,7 @@
 # exp: just for specifying the 'save_path'
 # split: ['92', '1_16', ...]. Please check directory './splits/$dataset' for concrete splits
 dataset='pascal'
-method='unimatch_v2_wandb_wo_FA_normloss'
+method='unimatch_v2_wandb_normloss_gradient'
 exp='dinov2_small'
 split='366'
 
