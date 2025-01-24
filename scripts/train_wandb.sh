@@ -32,7 +32,7 @@ python -m torch.distributed.launch \
     --master_addr=localhost \
     --master_port=$2 \
     ${method}.py \
-    --projectname Unimatch_RAE --runname pascal_092_norm_gradient \
+    --projectname Unimatch_RAE --runname pascal_FA_092_norm_gradient \
     --config=$config --labeled-id-path $labeled_id_path --unlabeled-id-path $unlabeled_id_path \
     --save-path $save_path --port $2 2>&1 | tee $save_path/out.log \
     
