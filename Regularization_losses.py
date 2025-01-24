@@ -51,7 +51,8 @@ class GradientPenaltyLoss(nn.Module):
                 grad_pred_loss = torch.zeros_like(embedding)
 
             # Normalize the gradients
-            norm = torch.norm(grad_pred_loss, p=2, dim=-1, keepdim=True) + 1e-8
+            # norm = torch.norm(grad_pred_loss, p=2, dim=-1, keepdim=True) + 1e-8
+            norm = 1000
             normalized_grad = grad_pred_loss / norm
             grad_squared = torch.square(normalized_grad)
             
