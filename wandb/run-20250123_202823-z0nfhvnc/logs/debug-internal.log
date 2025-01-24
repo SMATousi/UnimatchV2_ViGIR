@@ -1,0 +1,16 @@
+{"time":"2025-01-23T20:28:23.90286659-06:00","level":"INFO","msg":"using version","core version":"0.18.5"}
+{"time":"2025-01-23T20:28:23.902916565-06:00","level":"INFO","msg":"created symlink","path":"/home/macula/SMATousi/projects/Unimatch+RAE/UniMatch-V2/wandb/run-20250123_202823-z0nfhvnc/logs/debug-core.log"}
+{"time":"2025-01-23T20:28:24.079592554-06:00","level":"INFO","msg":"created new stream","id":"z0nfhvnc"}
+{"time":"2025-01-23T20:28:24.079667904-06:00","level":"INFO","msg":"stream: started","id":"z0nfhvnc"}
+{"time":"2025-01-23T20:28:24.079873779-06:00","level":"INFO","msg":"sender: started","stream_id":"z0nfhvnc"}
+{"time":"2025-01-23T20:28:24.079794124-06:00","level":"INFO","msg":"writer: Do: started","stream_id":{"value":"z0nfhvnc"}}
+{"time":"2025-01-23T20:28:24.079958428-06:00","level":"INFO","msg":"handler: started","stream_id":{"value":"z0nfhvnc"}}
+{"time":"2025-01-23T20:28:24.396838588-06:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-01-23T20:28:26.663989713-06:00","level":"INFO","msg":"stream: closing","id":"z0nfhvnc"}
+{"time":"2025-01-23T20:28:26.664176579-06:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-01-23T20:28:26.665435215-06:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-01-23T20:28:27.540826097-06:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-01-23T20:28:27.671325618-06:00","level":"INFO","msg":"handler: closed","stream_id":{"value":"z0nfhvnc"}}
+{"time":"2025-01-23T20:28:27.671433929-06:00","level":"INFO","msg":"sender: closed","stream_id":"z0nfhvnc"}
+{"time":"2025-01-23T20:28:27.671407025-06:00","level":"INFO","msg":"writer: Close: closed","stream_id":{"value":"z0nfhvnc"}}
+{"time":"2025-01-23T20:28:27.716465391-06:00","level":"INFO","msg":"stream: closed","id":"z0nfhvnc"}

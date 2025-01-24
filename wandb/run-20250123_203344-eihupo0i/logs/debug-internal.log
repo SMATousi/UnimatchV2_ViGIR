@@ -1,0 +1,16 @@
+{"time":"2025-01-23T20:33:44.721773064-06:00","level":"INFO","msg":"using version","core version":"0.18.5"}
+{"time":"2025-01-23T20:33:44.72181908-06:00","level":"INFO","msg":"created symlink","path":"/home/macula/SMATousi/projects/Unimatch+RAE/UniMatch-V2/wandb/run-20250123_203344-eihupo0i/logs/debug-core.log"}
+{"time":"2025-01-23T20:33:44.890069818-06:00","level":"INFO","msg":"created new stream","id":"eihupo0i"}
+{"time":"2025-01-23T20:33:44.890329942-06:00","level":"INFO","msg":"stream: started","id":"eihupo0i"}
+{"time":"2025-01-23T20:33:44.890199444-06:00","level":"INFO","msg":"handler: started","stream_id":{"value":"eihupo0i"}}
+{"time":"2025-01-23T20:33:44.89042092-06:00","level":"INFO","msg":"writer: Do: started","stream_id":{"value":"eihupo0i"}}
+{"time":"2025-01-23T20:33:44.890430157-06:00","level":"INFO","msg":"sender: started","stream_id":"eihupo0i"}
+{"time":"2025-01-23T20:33:45.24035298-06:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-01-23T20:33:47.452868358-06:00","level":"INFO","msg":"stream: closing","id":"eihupo0i"}
+{"time":"2025-01-23T20:33:47.452906152-06:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-01-23T20:33:47.453167486-06:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-01-23T20:33:48.217992505-06:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-01-23T20:33:48.358110643-06:00","level":"INFO","msg":"handler: closed","stream_id":{"value":"eihupo0i"}}
+{"time":"2025-01-23T20:33:48.358189081-06:00","level":"INFO","msg":"writer: Close: closed","stream_id":{"value":"eihupo0i"}}
+{"time":"2025-01-23T20:33:48.358214524-06:00","level":"INFO","msg":"sender: closed","stream_id":"eihupo0i"}
+{"time":"2025-01-23T20:33:48.401938704-06:00","level":"INFO","msg":"stream: closed","id":"eihupo0i"}

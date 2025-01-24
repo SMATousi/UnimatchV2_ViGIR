@@ -68,3 +68,30 @@ class GradientPenaltyLoss(nn.Module):
         loss = total_loss / len(embeddings)
         
         return loss
+
+
+class InputGradientLoss(nn.Module):
+    def __init__(self):
+        super(InputGradientLoss, self).__init__()
+
+    def forward(self, inputs, outputs):
+        # Ensure the inputs require gradients
+        inputs.requires_grad_(True)
+
+        # Choose a particular output, or sum over specified outputs, to compute gradients
+        # Here, we assume outputs are either scalar or you're summing them
+        if outputs.dim() > 1:
+            outputs = outputs.sum()
+
+        # Compute gradients of outputs w.r.t. inputs
+        gradients = torch.autograd.grad(outputs=outputs, inputs=inputs,
+                                        grad_outputs=torch.ones_like(outputs),
+                                        create_graph=True,  # Allows further gradient computations
+                                        only_inputs=True)[0]
+
+        # Compute the norm of the gradients, as a simple scalar loss
+        # The norm can highlight how much small changes in inputs can affect the output
+        loss = gradients.norm()
+
+        return loss
+

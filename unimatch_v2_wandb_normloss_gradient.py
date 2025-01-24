@@ -129,7 +129,7 @@ def main():
     criterion_u = nn.CrossEntropyLoss(reduction='none').cuda(local_rank)
     criterion_norm = NormalizedCompactnessNormLoss().cuda(local_rank)
     criterion_gradient = GradientPenaltyLoss().cuda(local_rank)
-
+    #criterion_gradient = InputGradientLoss().cuda(local_rank)
 
     trainset_u = SemiDataset(
         cfg['dataset'], cfg['data_root'], 'train_u', cfg['crop_size'], args.unlabeled_id_path
@@ -228,6 +228,7 @@ def main():
             
             loss_x = criterion_l(pred_x, mask_x)
             loss_x_norm = criterion_norm(pred_x_features)
+            #model._sync_params()
             loss_x_gradient = criterion_gradient(pred_x_features, pred_x)
 
             loss_u_s1 = criterion_u(pred_u_s1, mask_u_w_cutmixed1)

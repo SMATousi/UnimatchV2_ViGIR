@@ -18,4 +18,4 @@ conf_thresh: 0.95
 # arguments for model
 model: dpt
 backbone: dinov2_small
-lock_backbone: True
+lock_backbone: False
