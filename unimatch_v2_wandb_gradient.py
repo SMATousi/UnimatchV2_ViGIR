@@ -87,7 +87,11 @@ def main():
     }
     model = DPT_with_Feature(**{**model_configs[cfg['backbone'].split('_')[-1]], 'nclass': cfg['nclass']})
     state_dict = torch.load(f'./pretrained/{cfg["backbone"]}.pth')
-    model.backbone.load_state_dict(state_dict)
+
+    new_checkpoint = {k.replace('module.', ''): v for k, v in state_dict.items()}
+    # model.load_state_dict(new_checkpoint)
+
+    model.backbone.load_state_dict(new_checkpoint)
         
     if cfg['lock_backbone']:
         model.lock_backbone()
