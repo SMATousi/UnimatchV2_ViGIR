@@ -109,9 +109,9 @@ def main():
     model = torch.nn.SyncBatchNorm.convert_sync_batchnorm(model)
     model.cuda()
 
-    model = torch.nn.parallel.DistributedDataParallel(
-        model, device_ids=[local_rank], broadcast_buffers=False, output_device=local_rank, find_unused_parameters=True
-    )
+    # model = torch.nn.parallel.DistributedDataParallel(
+    #     model, device_ids=[local_rank], broadcast_buffers=False, output_device=local_rank, find_unused_parameters=True
+    # )
     
     model_ema = deepcopy(model)
     model_ema.eval()
