@@ -146,17 +146,17 @@ def main():
     
     trainsampler_l = torch.utils.data.distributed.DistributedSampler(trainset_l)
     trainloader_l = DataLoader(
-        trainset_l, batch_size=cfg['batch_size'], pin_memory=True, num_workers=4, drop_last=True, sampler=trainsampler_l
+        trainset_l, batch_size=cfg['batch_size'], pin_memory=True, num_workers=8, drop_last=True, sampler=trainsampler_l
     )
     
     trainsampler_u = torch.utils.data.distributed.DistributedSampler(trainset_u)
     trainloader_u = DataLoader(
-        trainset_u, batch_size=cfg['batch_size'], pin_memory=True, num_workers=4, drop_last=True, sampler=trainsampler_u
+        trainset_u, batch_size=cfg['batch_size'], pin_memory=True, num_workers=8, drop_last=True, sampler=trainsampler_u
     )
     
     valsampler = torch.utils.data.distributed.DistributedSampler(valset)
     valloader = DataLoader(
-        valset, batch_size=1, pin_memory=True, num_workers=1, drop_last=False, sampler=valsampler
+        valset, batch_size=1, pin_memory=True, num_workers=8, drop_last=False, sampler=valsampler
     )
     
     total_iters = len(trainloader_u) * cfg['epochs']
