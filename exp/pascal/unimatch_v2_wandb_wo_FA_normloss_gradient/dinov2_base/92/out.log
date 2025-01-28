@@ -1,0 +1,158 @@
+/home/macula/SMATousi/.conda/envs/snorkel/lib/python3.12/site-packages/torch/distributed/launch.py:208: FutureWarning: The module torch.distributed.launch is deprecated
+and will be removed in future. Use torchrun.
+Note that --use-env is set by default in torchrun.
+If your script expects `--local-rank` argument to be set, please
+change it to read from `os.environ['LOCAL_RANK']` instead. See 
+https://pytorch.org/docs/stable/distributed.html#launch-utility for 
+further instructions
+
+  main()
+2025-01-28 12:56:09.997613: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2025-01-28 12:56:10.005812: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:485] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2025-01-28 12:56:10.014397: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:8454] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2025-01-28 12:56:10.016880: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1452] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2025-01-28 12:56:10.023489: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX_VNNI FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2025-01-28 12:56:12.877958: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+/home/macula/SMATousi/.conda/envs/snorkel/lib/python3.12/site-packages/xformers/ops/fmha/flash.py:211: FutureWarning: `torch.library.impl_abstract` was renamed to `torch.library.register_fake`. Please use that instead; we will remove `torch.library.impl_abstract` in a future version of PyTorch.
+  @torch.library.impl_abstract("xformers_flash::flash_fwd")
+/home/macula/SMATousi/.conda/envs/snorkel/lib/python3.12/site-packages/xformers/ops/fmha/flash.py:344: FutureWarning: `torch.library.impl_abstract` was renamed to `torch.library.register_fake`. Please use that instead; we will remove `torch.library.impl_abstract` in a future version of PyTorch.
+  @torch.library.impl_abstract("xformers_flash::flash_bwd")
+[2025-01-28 12:56:22,698][    INFO] {'backbone': 'dinov2_small',
+ 'batch_size': 4,
+ 'conf_thresh': 0.95,
+ 'config': 'configs/pascal.yaml',
+ 'criterion': {'kwargs': {'ignore_index': 255}, 'name': 'CELoss'},
+ 'crop_size': 518,
+ 'data_root': '/root/home/pascal',
+ 'dataset': 'pascal',
+ 'epochs': 60,
+ 'labeled_id_path': 'splits/pascal/92/labeled.txt',
+ 'local_rank': 0,
+ 'lock_backbone': False,
+ 'lr': 5e-06,
+ 'lr_multi': 40.0,
+ 'model': 'dpt',
+ 'nclass': 21,
+ 'ngpus': 1,
+ 'port': 8080,
+ 'projectname': 'Unimatch_RAE',
+ 'runname': 'testing',
+ 'save_path': 'exp/pascal/unimatch_v2_wandb_wo_FA_normloss_gradient/dinov2_base/92',
+ 'unlabeled_id_path': 'splits/pascal/92/unlabeled.txt'}
+
+wandb: Using wandb-core as the SDK backend. Please refer to https://wandb.me/wandb-core for more information.
+wandb: Currently logged in as: stmmc (tousi-team). Use `wandb login --relogin` to force relogin
+wandb: Tracking run with wandb version 0.18.5
+wandb: Run data is saved locally in /home/macula/SMATousi/projects/Unimatch+RAE/UniMatch-V2/wandb/run-20250128_125623-snlu8qe6
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run testing
+wandb: ⭐️ View project at https://wandb.ai/tousi-team/Unimatch_RAE
+wandb: 🚀 View run at https://wandb.ai/tousi-team/Unimatch_RAE/runs/snlu8qe6
+/home/macula/SMATousi/projects/Unimatch+RAE/UniMatch-V2/unimatch_v2_wandb_wo_FA_normloss_gradient.py:89: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  state_dict = torch.load(f'./pretrained/{cfg["backbone"]}.pth')
+[2025-01-28 12:56:25,759][    INFO] Total params: 24.8M
+[2025-01-28 12:56:25,759][    INFO] Encoder params: 22.1M
+[2025-01-28 12:56:25,759][    INFO] Decoder params: 2.7M
+
+[2025-01-28 12:56:25,956][    INFO] ===========> Epoch: 0, Previous best: 0.00 @epoch-0, EMA: 0.00 @epoch-0
+Traceback (most recent call last):
+  File "/home/macula/SMATousi/projects/Unimatch+RAE/UniMatch-V2/unimatch_v2_wandb_wo_FA_normloss_gradient.py", line 334, in <module>
+    main()
+  File "/home/macula/SMATousi/projects/Unimatch+RAE/UniMatch-V2/unimatch_v2_wandb_wo_FA_normloss_gradient.py", line 196, in main
+    for i, ((img_x, mask_x),
+  File "/home/macula/SMATousi/.conda/envs/snorkel/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 630, in __next__
+    data = self._next_data()
+           ^^^^^^^^^^^^^^^^^
+  File "/home/macula/SMATousi/.conda/envs/snorkel/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1344, in _next_data
+    return self._process_data(data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/macula/SMATousi/.conda/envs/snorkel/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1370, in _process_data
+    data.reraise()
+  File "/home/macula/SMATousi/.conda/envs/snorkel/lib/python3.12/site-packages/torch/_utils.py", line 706, in reraise
+    raise exception
+PermissionError: Caught PermissionError in DataLoader worker process 0.
+Original Traceback (most recent call last):
+  File "/home/macula/SMATousi/.conda/envs/snorkel/lib/python3.12/site-packages/torch/utils/data/_utils/worker.py", line 309, in _worker_loop
+    data = fetcher.fetch(index)  # type: ignore[possibly-undefined]
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/macula/SMATousi/.conda/envs/snorkel/lib/python3.12/site-packages/torch/utils/data/_utils/fetch.py", line 52, in fetch
+    data = [self.dataset[idx] for idx in possibly_batched_index]
+            ~~~~~~~~~~~~^^^^^
+  File "/home/macula/SMATousi/projects/Unimatch+RAE/UniMatch-V2/dataset/semi.py", line 34, in __getitem__
+    img = Image.open(os.path.join(self.root, id.split(' ')[0])).convert('RGB')
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/macula/SMATousi/.conda/envs/snorkel/lib/python3.12/site-packages/PIL/Image.py", line 3277, in open
+    fp = builtins.open(filename, "rb")
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+PermissionError: [Errno 13] Permission denied: '/root/home/pascal/JPEGImages/2011_002585.jpg'
+
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "/home/macula/SMATousi/projects/Unimatch+RAE/UniMatch-V2/unimatch_v2_wandb_wo_FA_normloss_gradient.py", line 334, in <module>
+[rank0]:     main()
+[rank0]:   File "/home/macula/SMATousi/projects/Unimatch+RAE/UniMatch-V2/unimatch_v2_wandb_wo_FA_normloss_gradient.py", line 196, in main
+[rank0]:     for i, ((img_x, mask_x),
+[rank0]:   File "/home/macula/SMATousi/.conda/envs/snorkel/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 630, in __next__
+[rank0]:     data = self._next_data()
+[rank0]:            ^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/macula/SMATousi/.conda/envs/snorkel/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1344, in _next_data
+[rank0]:     return self._process_data(data)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/macula/SMATousi/.conda/envs/snorkel/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1370, in _process_data
+[rank0]:     data.reraise()
+[rank0]:   File "/home/macula/SMATousi/.conda/envs/snorkel/lib/python3.12/site-packages/torch/_utils.py", line 706, in reraise
+[rank0]:     raise exception
+[rank0]: PermissionError: Caught PermissionError in DataLoader worker process 0.
+[rank0]: Original Traceback (most recent call last):
+[rank0]:   File "/home/macula/SMATousi/.conda/envs/snorkel/lib/python3.12/site-packages/torch/utils/data/_utils/worker.py", line 309, in _worker_loop
+[rank0]:     data = fetcher.fetch(index)  # type: ignore[possibly-undefined]
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/macula/SMATousi/.conda/envs/snorkel/lib/python3.12/site-packages/torch/utils/data/_utils/fetch.py", line 52, in fetch
+[rank0]:     data = [self.dataset[idx] for idx in possibly_batched_index]
+[rank0]:             ~~~~~~~~~~~~^^^^^
+[rank0]:   File "/home/macula/SMATousi/projects/Unimatch+RAE/UniMatch-V2/dataset/semi.py", line 34, in __getitem__
+[rank0]:     img = Image.open(os.path.join(self.root, id.split(' ')[0])).convert('RGB')
+[rank0]:           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/macula/SMATousi/.conda/envs/snorkel/lib/python3.12/site-packages/PIL/Image.py", line 3277, in open
+[rank0]:     fp = builtins.open(filename, "rb")
+[rank0]:          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]: PermissionError: [Errno 13] Permission denied: '/root/home/pascal/JPEGImages/2011_002585.jpg'
+
+[1;34mwandb[0m: 🚀 View run [33mtesting[0m at: [34mhttps://wandb.ai/tousi-team/Unimatch_RAE/runs/snlu8qe6[0m
+[1;34mwandb[0m: Find logs at: [1;35mwandb/run-20250128_125623-snlu8qe6/logs[0m
+E0128 12:56:28.501000 140054919124032 torch/distributed/elastic/multiprocessing/api.py:833] failed (exitcode: 1) local_rank: 0 (pid: 1697807) of binary: /home/macula/SMATousi/.conda/envs/snorkel/bin/python
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/macula/SMATousi/.conda/envs/snorkel/lib/python3.12/site-packages/torch/distributed/launch.py", line 208, in <module>
+    main()
+  File "/home/macula/SMATousi/.conda/envs/snorkel/lib/python3.12/site-packages/typing_extensions.py", line 2636, in wrapper
+    return arg(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/macula/SMATousi/.conda/envs/snorkel/lib/python3.12/site-packages/torch/distributed/launch.py", line 204, in main
+    launch(args)
+  File "/home/macula/SMATousi/.conda/envs/snorkel/lib/python3.12/site-packages/torch/distributed/launch.py", line 189, in launch
+    run(args)
+  File "/home/macula/SMATousi/.conda/envs/snorkel/lib/python3.12/site-packages/torch/distributed/run.py", line 892, in run
+    elastic_launch(
+  File "/home/macula/SMATousi/.conda/envs/snorkel/lib/python3.12/site-packages/torch/distributed/launcher/api.py", line 133, in __call__
+    return launch_agent(self._config, self._entrypoint, list(args))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/macula/SMATousi/.conda/envs/snorkel/lib/python3.12/site-packages/torch/distributed/launcher/api.py", line 264, in launch_agent
+    raise ChildFailedError(
+torch.distributed.elastic.multiprocessing.errors.ChildFailedError: 
+============================================================
+unimatch_v2_wandb_wo_FA_normloss_gradient.py FAILED
+------------------------------------------------------------
+Failures:
+  <NO_OTHER_FAILURES>
+------------------------------------------------------------
+Root Cause (first observed failure):
+[0]:
+  time      : 2025-01-28_12:56:28
+  host      : localhost
+  rank      : 0 (local_rank: 0)
+  exitcode  : 1 (pid: 1697807)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+============================================================

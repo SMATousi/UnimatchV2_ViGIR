@@ -1,0 +1,68 @@
+/home/macula/SMATousi/projects/Unimatch+RAE/UniMatch-V2/unimatch_v2_wandb_wo_FA_normloss_gradient.py:89: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  state_dict = torch.load(f'./pretrained/{cfg["backbone"]}.pth')
+[2025-01-28 12:56:25,759][    INFO] Total params: 24.8M
+[2025-01-28 12:56:25,759][    INFO] Encoder params: 22.1M
+[2025-01-28 12:56:25,759][    INFO] Decoder params: 2.7M
+
+[2025-01-28 12:56:25,956][    INFO] ===========> Epoch: 0, Previous best: 0.00 @epoch-0, EMA: 0.00 @epoch-0
+Traceback (most recent call last):
+  File "/home/macula/SMATousi/projects/Unimatch+RAE/UniMatch-V2/unimatch_v2_wandb_wo_FA_normloss_gradient.py", line 334, in <module>
+    main()
+  File "/home/macula/SMATousi/projects/Unimatch+RAE/UniMatch-V2/unimatch_v2_wandb_wo_FA_normloss_gradient.py", line 196, in main
+    for i, ((img_x, mask_x),
+  File "/home/macula/SMATousi/.conda/envs/snorkel/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 630, in __next__
+    data = self._next_data()
+           ^^^^^^^^^^^^^^^^^
+  File "/home/macula/SMATousi/.conda/envs/snorkel/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1344, in _next_data
+    return self._process_data(data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/macula/SMATousi/.conda/envs/snorkel/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1370, in _process_data
+    data.reraise()
+  File "/home/macula/SMATousi/.conda/envs/snorkel/lib/python3.12/site-packages/torch/_utils.py", line 706, in reraise
+    raise exception
+PermissionError: Caught PermissionError in DataLoader worker process 0.
+Original Traceback (most recent call last):
+  File "/home/macula/SMATousi/.conda/envs/snorkel/lib/python3.12/site-packages/torch/utils/data/_utils/worker.py", line 309, in _worker_loop
+    data = fetcher.fetch(index)  # type: ignore[possibly-undefined]
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/macula/SMATousi/.conda/envs/snorkel/lib/python3.12/site-packages/torch/utils/data/_utils/fetch.py", line 52, in fetch
+    data = [self.dataset[idx] for idx in possibly_batched_index]
+            ~~~~~~~~~~~~^^^^^
+  File "/home/macula/SMATousi/projects/Unimatch+RAE/UniMatch-V2/dataset/semi.py", line 34, in __getitem__
+    img = Image.open(os.path.join(self.root, id.split(' ')[0])).convert('RGB')
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/macula/SMATousi/.conda/envs/snorkel/lib/python3.12/site-packages/PIL/Image.py", line 3277, in open
+    fp = builtins.open(filename, "rb")
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+PermissionError: [Errno 13] Permission denied: '/root/home/pascal/JPEGImages/2011_002585.jpg'
+
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "/home/macula/SMATousi/projects/Unimatch+RAE/UniMatch-V2/unimatch_v2_wandb_wo_FA_normloss_gradient.py", line 334, in <module>
+[rank0]:     main()
+[rank0]:   File "/home/macula/SMATousi/projects/Unimatch+RAE/UniMatch-V2/unimatch_v2_wandb_wo_FA_normloss_gradient.py", line 196, in main
+[rank0]:     for i, ((img_x, mask_x),
+[rank0]:   File "/home/macula/SMATousi/.conda/envs/snorkel/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 630, in __next__
+[rank0]:     data = self._next_data()
+[rank0]:            ^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/macula/SMATousi/.conda/envs/snorkel/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1344, in _next_data
+[rank0]:     return self._process_data(data)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/macula/SMATousi/.conda/envs/snorkel/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 1370, in _process_data
+[rank0]:     data.reraise()
+[rank0]:   File "/home/macula/SMATousi/.conda/envs/snorkel/lib/python3.12/site-packages/torch/_utils.py", line 706, in reraise
+[rank0]:     raise exception
+[rank0]: PermissionError: Caught PermissionError in DataLoader worker process 0.
+[rank0]: Original Traceback (most recent call last):
+[rank0]:   File "/home/macula/SMATousi/.conda/envs/snorkel/lib/python3.12/site-packages/torch/utils/data/_utils/worker.py", line 309, in _worker_loop
+[rank0]:     data = fetcher.fetch(index)  # type: ignore[possibly-undefined]
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/macula/SMATousi/.conda/envs/snorkel/lib/python3.12/site-packages/torch/utils/data/_utils/fetch.py", line 52, in fetch
+[rank0]:     data = [self.dataset[idx] for idx in possibly_batched_index]
+[rank0]:             ~~~~~~~~~~~~^^^^^
+[rank0]:   File "/home/macula/SMATousi/projects/Unimatch+RAE/UniMatch-V2/dataset/semi.py", line 34, in __getitem__
+[rank0]:     img = Image.open(os.path.join(self.root, id.split(' ')[0])).convert('RGB')
+[rank0]:           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/macula/SMATousi/.conda/envs/snorkel/lib/python3.12/site-packages/PIL/Image.py", line 3277, in open
+[rank0]:     fp = builtins.open(filename, "rb")
+[rank0]:          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]: PermissionError: [Errno 13] Permission denied: '/root/home/pascal/JPEGImages/2011_002585.jpg'

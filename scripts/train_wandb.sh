@@ -19,6 +19,7 @@ dataset='pascal'
 method='unimatch_v2_wandb_wo_FA_gradient'
 exp='dinov2_small'
 split='92'
+run_name='pascal_wo_FA_92_gradient'
 
 config=configs/${dataset}.yaml
 labeled_id_path=splits/$dataset/$split/labeled.txt
@@ -32,7 +33,7 @@ python -m torch.distributed.launch \
     --master_addr=localhost \
     --master_port=$2 \
     ${method}.py \
-    --projectname Unimatch_RAE --runname pascal_wo_FA_gradient \
+    --projectname Unimatch_RAE --runname $run_name \
     --config=$config --labeled-id-path $labeled_id_path --unlabeled-id-path $unlabeled_id_path \
     --save-path $save_path --port $2 2>&1 | tee $save_path/out.log \
     
