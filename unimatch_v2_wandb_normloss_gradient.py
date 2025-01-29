@@ -26,10 +26,10 @@ import wandb
 
 import numpy as np
 import random
-torch.manual_seed(42)
-torch.cuda.manual_seed_all(42)
-np.random.seed(42)
-random.seed(42)
+# torch.manual_seed(42)
+# torch.cuda.manual_seed_all(42)
+# np.random.seed(42)
+# random.seed(42)
 
 
 parser = argparse.ArgumentParser(description='UniMatch V2: Pushing the Limit of Semi-Supervised Semantic Segmentation')
