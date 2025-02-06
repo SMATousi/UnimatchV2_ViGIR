@@ -7,10 +7,11 @@
 nproc_per_node=$1
 master_port=$2
 run_name=$3
-split=$4
-exp=$5
-method=$6
-dataset=$7
+project_name=$4
+split=$5
+exp=$6
+method=$7
+dataset=$8
 
 # Default values if not provided
 config=configs/${dataset}.yaml
@@ -27,6 +28,6 @@ python -m torch.distributed.launch \
     --master_addr=localhost \
     --master_port=$master_port \
     ${method}.py \
-    --projectname Unimatch_RAE_366_pascal --runname $run_name \
+    --projectname $project_name --runname $run_name \
     --config=$config --labeled-id-path $labeled_id_path --unlabeled-id-path $unlabeled_id_path \
     --save-path $save_path --port $master_port 2>&1 | tee $save_path/out.log
